@@ -53,6 +53,9 @@ public class USSDStringImpl extends OctetStringBase implements USSDString {
     private static GSMCharset gsm7Charset = new GSMCharset("GSM", new String[] {});
     private static GSMCharset gsm7Charset_Urdu = new GSMCharset("GSM", new String[] {}, GSMCharset.BYTE_TO_CHAR_UrduAlphabet,
             GSMCharset.BYTE_TO_CHAR_UrduAlphabetExtentionTable);
+    private static GSMCharset gsm7Charset_Portuguese = new GSMCharset("GSM", new String[] {}, GSMCharset.BYTE_TO_CHAR_PortugueseAlphabet,
+            GSMCharset.BYTE_TO_CHAR_PortugueseAlphabetExtentionTable);
+
     private static Charset ucs2Charset = Charset.forName("UTF-16BE");
 
     public USSDStringImpl(CBSDataCodingScheme dataCodingScheme) {
@@ -94,6 +97,9 @@ public class USSDStringImpl extends OctetStringBase implements USSDString {
                     Charset cSet = gsm7Charset;
                     if (dataCodingScheme.getNationalLanguageShiftTable() == CBSNationalLanguage.Arabic) {
                         cSet = gsm7Charset_Urdu;
+                    }
+                    if (dataCodingScheme.getNationalLanguageShiftTable() == CBSNationalLanguage.Portuguese) {
+                        cSet = gsm7Charset_Portuguese;
                     }
                     GSMCharsetEncoder encoder = (GSMCharsetEncoder) cSet.newEncoder();
                     encoder.setGSMCharsetEncodingData(new GSMCharsetEncodingData(Gsm7EncodingStyle.bit7_ussd_style, null));
@@ -186,6 +192,9 @@ public class USSDStringImpl extends OctetStringBase implements USSDString {
                     GSMCharset cSet = gsm7Charset;
                     if (dataCodingScheme.getNationalLanguageShiftTable() == CBSNationalLanguage.Arabic) {
                         cSet = gsm7Charset_Urdu;
+                    }
+                    if (dataCodingScheme.getNationalLanguageShiftTable() == CBSNationalLanguage.Portuguese) {
+                        cSet = gsm7Charset_Portuguese;
                     }
                     GSMCharsetDecoder decoder = (GSMCharsetDecoder) cSet.newDecoder();
                     decoder.setGSMCharsetDecodingData(new GSMCharsetDecodingData(Gsm7EncodingStyle.bit7_ussd_style,
