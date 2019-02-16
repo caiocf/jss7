@@ -85,6 +85,9 @@ public class GSMCharset extends Charset {
                 case Urdu:
                     this.mainTable = BYTE_TO_CHAR_UrduAlphabet;
                     break;
+                case Portuguese:
+                    this.mainTable = BYTE_TO_CHAR_PortugueseAlphabet;
+                    break;
                 default:
                     this.mainTable = BYTE_TO_CHAR_DefaultAlphabet;
                     break;
@@ -96,6 +99,9 @@ public class GSMCharset extends Charset {
             switch (nationalLanguageSingleShiftIdentifier) {
                 case Urdu:
                     this.extensionTable = BYTE_TO_CHAR_UrduAlphabetExtentionTable;
+                    break;
+                case Portuguese:
+                    this.extensionTable = BYTE_TO_CHAR_PortugueseAlphabetExtentionTable;
                     break;
                 default:
                     this.extensionTable = BYTE_TO_CHAR_DefaultAlphabetExtentionTable;
